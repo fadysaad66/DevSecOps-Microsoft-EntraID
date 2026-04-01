@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\AzurePipelines",
+    "\\CRUDDemo",
+    "\\CRUDDemo\\CRUDDemo",
+    "\\CRUDDemo\\CRUDDemo\\Views",
+    "\\CRUDDemo\\CRUDDemo\\Views\\Shared",
+    "\\Terraform",
+    "\\Terraform-Organizaional-resources"
+  ],
+  "SelectedNode": "\\CRUDDemo\\CRUDDemo\\Views\\Shared\\_Layout.cshtml",
+  "PreviewInSolutionExplorer": false
+}
