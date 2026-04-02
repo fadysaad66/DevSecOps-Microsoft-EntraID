@@ -1,3 +1,4 @@
+provider "azuread" {}
 
 data "azuread_group" "sql" {
   display_name     = local.sqlServerGroup

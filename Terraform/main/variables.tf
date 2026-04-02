@@ -16,17 +16,18 @@ locals {
       CreatedBy   =  "DevSecOps"
   }
 #backend init
-tfResourceGroup= "rg-mainResources-prod"
-tfStorage = "tfstatedevsecopsdemoprod"
+tfResourceGroup= "rg-tf-state"
+tfStorage = "stlabstatestacc123"
 tfContainer = "tfstate-cruddemo"
 acrRegistry = "acrOrganizationahalimdemodevsecopsprod"
 sqlServerGroup = "Azure SQL Server Groups Administrator"
+orgResourceGroup = "rg-tf-state"
 #tf normal vars
 resourceGroup = join("", ["rg-", var.projectName, "-", var.environment])
 resourceGroupLocation = "West Europe"
 fireWallName = join("", ["arc", var.projectName, "-", var.environment])  
 keyVaultName = join("", ["akv-", var.projectName, "-", var.environment]) 
-webappName-api = join("",["wa-", var.projectName, "-api-", var.environment])
+webappNameApi = join("",["wa-", var.projectName, "-api-", var.environment])
 appServicePlan = join("", ["asp-", var.projectName, "-", var.environment])
 sqlserverName = lower( join("", ["sql-", var.projectName, "-", var.environment]))
 sqlDBName = lower( join("", ["sqldb-", var.projectName, "-", var.environment]))

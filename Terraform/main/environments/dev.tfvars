@@ -1,1 +1,5 @@
+pipelineURI            = "REPLACE_ME"
+environment            = "dev"
+projectName            = "cruddemo"
+privilegedUsers        = "REPLACE_ME"
 ASPNETCORE_ENVIRONMENT = "dev"

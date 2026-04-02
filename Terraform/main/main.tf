@@ -5,13 +5,18 @@ terraform {
     storage_account_name = local.tfStorage
     container_name       = local.tfContainer
   }
-  required_providers {
-    azurerm = "3.40.0"
+    required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.40"
+    }
+    azuread = {
+      source  = "hashicorp/azuread"
+      version = "~> 2.15"
+    }
   }
 }
-provider "azurerm" {
-  features {}
-}
+provider "azuread" {}
 
 resource "azurerm_resource_group" "main" {
   name     = local.resourceGroup

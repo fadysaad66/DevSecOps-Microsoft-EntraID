@@ -15,7 +15,7 @@ resource "azurerm_service_plan" "main" {
 }
 
 resource "azurerm_linux_web_app" "api" {
-  name                = local.webappName-api
+  name                = local.webappNameApi
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_service_plan.main.location
   service_plan_id     = azurerm_service_plan.main.id
@@ -24,17 +24,17 @@ resource "azurerm_linux_web_app" "api" {
     DOCKER_REGISTRY_SERVER_PASSWORD    = data.azurerm_container_registry.main.admin_password
     DOCKER_REGISTRY_SERVER_URL         = data.azurerm_container_registry.main.login_server
     DOCKER_REGISTRY_SERVER_USERNAME    = data.azurerm_container_registry.main.admin_username
-    WEBSITES_ENABLE_APP_SERVICE_STORAG = "false"
+    WEBSITES_ENABLE_APP_SERVICE_STORAGE = "false"
     ASPNETCORE_ENVIRONMENT             = var.ASPNETCORE_ENVIRONMENT
     Environment                        = var.environment
   }
 
   site_config {
-    always_on = "true"
+    always_on = true
     app_command_line = "dotnet CRUDDemo.dll"
     application_stack {
-      docker_image     = join("", [data.azurerm_container_registry.main.login_server, "/cruddemo"])
-      docker_image_tag = "latest"
+      docker_image_name   = "cruddemo:latest"
+      docker_registry_url = "https://${data.azurerm_container_registry.main.login_server}"
     }
   }
   connection_string {

@@ -14,6 +14,6 @@ locals {
 resourceGroup = join("", ["rg-mainResources-", var.environment]) 
 resourceGroupLocation = "West Europe"
 containerRegistry = join("", ["acrOrganizationahalimdemodevsecops", var.environment]) ## It must have a Unique naming
-storageAccount = join("", ["tfstatedevsecopsdemo", var.environment]) ## It must have a Unique naming
+storageAccount = join("", ["stlabstatestacc123", var.environment]) ## It must have a Unique naming
 }
 
