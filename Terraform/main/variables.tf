@@ -19,12 +19,12 @@ locals {
 tfResourceGroup= "rg-tf-state"
 tfStorage = "stlabstatestacc123"
 tfContainer = "tfstate-cruddemo"
-acrRegistry = "acrOrganizationahalimdemodevsecopsprod"
+acrRegistry = "acrdevsecopslab"
 sqlServerGroup = "Azure SQL Server Groups Administrator"
 orgResourceGroup = "rg-tf-state"
 #tf normal vars
 resourceGroup = join("", ["rg-", var.projectName, "-", var.environment])
-resourceGroupLocation = "West Europe"
+resourceGroupLocation = "Central US"
 fireWallName = join("", ["arc", var.projectName, "-", var.environment])  
 keyVaultName = join("", ["akv-", var.projectName, "-", var.environment]) 
 webappNameApi = join("",["wa-", var.projectName, "-api-", var.environment])

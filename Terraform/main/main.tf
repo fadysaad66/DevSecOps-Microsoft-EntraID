@@ -1,11 +1,12 @@
 terraform {
-  required_version = ">= 1.1.9"
+  required_version = ">= 1.6.6"
   backend "azurerm" {
-    resource_group_name  = local.tfResourceGroup
-    storage_account_name = local.tfStorage
-    container_name       = local.tfContainer
+    resource_group_name  = "rg-tf-state"
+    storage_account_name = "stlabstatestacc123"
+    container_name       = "tfstate"
+    use_azuread_auth     = true
   }
-    required_providers {
+  required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = "~> 3.40"
@@ -16,6 +17,12 @@ terraform {
     }
   }
 }
+
+provider "azurerm" {
+  features {}
+  use_oidc = true
+}
+
 provider "azuread" {}
 
 resource "azurerm_resource_group" "main" {

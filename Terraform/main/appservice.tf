@@ -3,7 +3,7 @@ resource "azurerm_service_plan" "main" {
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   os_type             = "Linux"
-  sku_name            = "P1v2"
+  sku_name            = "B1"
   tags                = local.common_tags
 
   lifecycle {
@@ -25,13 +25,13 @@ resource "azurerm_linux_web_app" "api" {
     DOCKER_REGISTRY_SERVER_URL         = data.azurerm_container_registry.main.login_server
     DOCKER_REGISTRY_SERVER_USERNAME    = data.azurerm_container_registry.main.admin_username
     WEBSITES_ENABLE_APP_SERVICE_STORAGE = "false"
+    WEBSITES_PORT = "80"
     ASPNETCORE_ENVIRONMENT             = var.ASPNETCORE_ENVIRONMENT
     Environment                        = var.environment
   }
 
   site_config {
     always_on = true
-    app_command_line = "dotnet CRUDDemo.dll"
     application_stack {
       docker_image_name   = "cruddemo:latest"
       docker_registry_url = "https://${data.azurerm_container_registry.main.login_server}"
@@ -57,7 +57,6 @@ resource "azurerm_linux_web_app" "api" {
     ignore_changes = [
       tags["CreatedDate"],
       tags["CreatedBy"],
-      site_config[0].application_stack[0].docker_image_tag
     ]
   }
 }
